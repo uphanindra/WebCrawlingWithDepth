@@ -1,0 +1,59 @@
+READ ME:
+-----------
+There are  Java classes in this application.
+  1.WebCrawlAssignment
+  2.WebCrawler
+  3.WebCrawlDBUtil
+
+Algoritham Used: Iterative Deepening Depth First Search/Traverse
+----------------
+
+Input:
+-------
+    a. A proper URL of a website. for example 'https://www.flipkart.com/'.
+	b. A Check word/ Domain name. Checkword is used to ski the URLs of other websites. Example checkword is 'flipkart.com'.
+	c. Depth, The number of levels to traverse the website/url.
+	
+Output:
+--------
+    Output will be saved in MYSQL table and be are the syntax used to create it.
+	Database Name: WebCrawlDb
+	Table Name: CrawlLinks
+		CREATE TABLE `WebCrawlDb`.`CrawlLinks` ( `link` TEXT NULL DEFAULT NULL , `depth` INT NULL DEFAULT NULL ) ENGINE = InnoDB;
+
+
+1.WebCrawlAssignment:
+----------------------
+
+WebCrawlAssignment class is the main class of application. It get spport from WebCrawler to crawl or traverse the given website/url. 
+ 
+	
+2. WebCrawler:
+--------------
+WebCrawler class implements the designed algortihm to crawl website upto given depth.
+
+  Algoritham:
+  ------------
+     1. Open the Input URL and read all hyperlinks in that page. [Used Jsoup framework]
+	 2. If input URL is valid then save it into MYSQL table with its depth (1). And decrease Maximum Depth allowed by 1.
+	    Otherwsie report that input URL is invalid.
+	 3. Do the below for each hyperlink found in page and Maximum Depth allowed > 0,
+		a. Check if URL in hyperlink is valid i.e, URL belongs to inut website.
+		b. Check if URL in hyperlink starts with '/' then concatinate it with Inut URL/domain of website.
+		c. Otherwsie URL is invalid and donot process it.
+		d. If the URL is valid (If it is satisfies rule a&b) then store it in MYSQL table. Decrease Maximum Depth allowed by 1.
+		   Repeat Step 3 for all the hyperlinks in current URL.
+	 
+	Program Flow:
+	-------------
+	    1. Delete all rows in MYSQL table using WebCrawlDBUtil. [Assumed table can store only current crawl request output]
+		2. Execute above algortihm and store every valid URL and its Depth into MYSQL Table using WebCrawlDBUtil.
+		3. Display all links and depth from MYSQL table using WebCrawlDBUtil.
+
+3. WebCrawlDBUtil:
+--------------------
+   It implemented 3 database operations,
+		1. Insert a row into table. [URL and DEPTH].
+		2. Read all rows from table.
+		3. Delete all rows in table.
+	 

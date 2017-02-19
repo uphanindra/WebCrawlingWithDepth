@@ -1,0 +1,4 @@
+Database Name: WebCrawlDb
+Table Name: CrawlLinks
+
+CREATE TABLE `WebCrawlDb`.`CrawlLinks` ( `link` TEXT NULL DEFAULT NULL , `depth` INT NULL DEFAULT NULL ) ENGINE = InnoDB;
