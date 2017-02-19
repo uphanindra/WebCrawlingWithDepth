@@ -1,6 +1,6 @@
 READ ME:
 -----------
-There are  Java classes in this application.
+There are 3 Java classes in this application.
   1.WebCrawlAssignment
   2.WebCrawler
   3.WebCrawlDBUtil
@@ -10,8 +10,8 @@ Algoritham Used: Iterative Deepening Depth First Search/Traverse
 
 Input:
 -------
-    a. A proper URL of a website. for example 'https://www.flipkart.com/'.
-	b. A Check word/ Domain name. Checkword is used to ski the URLs of other websites. Example checkword is 'flipkart.com'.
+    a. A valid URL of a website. for example 'https://www.xyz.com/'.
+	b. A Check word/ Domain name. Checkword is used to ski the URLs of other websites. Example checkword is 'xyz.com'.
 	c. Depth, The number of levels to traverse the website/url.
 	
 Output:
